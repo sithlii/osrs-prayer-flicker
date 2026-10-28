@@ -43,7 +43,13 @@ export function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <h1>Prayer Flick Trainer</h1>
+        <div className="brand">
+          <span className="brand-orb" aria-hidden>✦</span>
+          <div>
+            <h1>Prayer Flick Trainer</h1>
+            <div className="brand-sub">A fan-made OSRS training tool</div>
+          </div>
+        </div>
         <nav>
           {ROUTES.map((r) => (
             <a key={r.id} href={`#/${r.id}`} className={r.id === route.id ? 'on' : ''} aria-current={r.id === route.id ? 'page' : undefined}>
@@ -54,7 +60,8 @@ export function App() {
       </header>
       <main>{route.render()}</main>
       <footer className="muted small">
-        Fan-made training tool. Not affiliated with Jagex. All art is original.
+        Fan-made and free: not made for profit, and not affiliated with or endorsed by Jagex Ltd.
+        Old School RuneScape and the prayer icons (via the OSRS Wiki) are © Jagex Ltd.
       </footer>
     </div>
   );

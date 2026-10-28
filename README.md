@@ -2,6 +2,8 @@
 
 A browser app for practising Old School RuneScape prayer flicking. It simulates the 0.6s game tick and the server's prayer drain rules, then shows exactly where each of your clicks landed and what it cost.
 
+> **Fan-made and non-commercial.** This project is not affiliated with, endorsed by or sponsored by Jagex Ltd, and it was not made for profit. It is free, with no ads or paid features. Old School RuneScape and its artwork are © Jagex Ltd. See [Disclaimer](#disclaimer).
+
 Everything runs locally in your browser. There is no account, no server and no tracking. Your settings, keybinds and session history are saved in your browser's local storage.
 
 ## Running it
@@ -80,4 +82,6 @@ src/
 
 ## Disclaimer
 
-This is a fan-made training tool. It is not affiliated with or endorsed by Jagex. All art is original CSS and SVG, and no game assets or music are included.
+This is a fan-made training tool, built by a player for other players. It is not affiliated with, endorsed by or sponsored by Jagex Ltd, and it was not made for profit: it is free, has no ads or paid features, and earns nothing.
+
+The prayer icons in `public/prayers/` are © Jagex Ltd, downloaded from the [Old School RuneScape Wiki](https://oldschool.runescape.wiki/) and used under Jagex's terms for non-commercial fan content. Everything else is original CSS and SVG, and no game music is included.

@@ -57,7 +57,7 @@ export function Progress() {
       </div>
       {message && <p className="muted">{message}</p>}
 
-      {variants.length === 0 && <p className="muted">No sessions for this mode yet. Finish a run of at least a few ticks to record one.</p>}
+      {variants.length === 0 && <div className="card muted">No sessions for this mode yet. Finish a run of at least a few ticks to record one.</div>}
       {variants.map((v) => {
         const recs = forMode.filter((r) => r.variant === v);
         const best = [...recs].sort((a, b) => b.accuracy - a.accuracy || b.longestStreak - a.longestStreak)[0];

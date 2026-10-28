@@ -46,7 +46,7 @@ export const DEFAULT_SETTINGS: Settings = {
   metronomeVolume: 0.6,
   metronomePitch: 1000,
   metronomeSound: 'click',
-  theme: 'system',
+  theme: 'dark',
   showKeyLabels: true,
   engine: DEFAULT_CONFIG,
   keybinds: DEFAULT_KEYBINDS,
@@ -72,9 +72,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => save(KEY, settings), [settings]);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (settings.theme === 'system') root.removeAttribute('data-theme');
-    else root.setAttribute('data-theme', settings.theme);
+    document.documentElement.setAttribute('data-theme', settings.theme);
   }, [settings.theme]);
 
   const update = useCallback((patch: Partial<Settings>) => setSettings((s) => ({ ...s, ...patch })), []);

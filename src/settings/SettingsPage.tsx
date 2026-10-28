@@ -78,7 +78,7 @@ export function SettingsPage() {
 
       <div className="card settings-grid">
         <h3>Display</h3>
-        <div className="field" role="group" aria-label="Theme"><span>Theme</span> <Segmented value={settings.theme} onChange={(v) => update({ theme: v })} options={[{ value: 'system', label: 'System' }, { value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }]} /></div>
+        <div className="field" role="group" aria-label="Theme"><span>Theme</span> <Segmented value={settings.theme} onChange={(v) => update({ theme: v })} options={[{ value: 'dark', label: 'Stone' }, { value: 'light', label: 'Parchment' }, { value: 'system', label: 'Match system' }]} /></div>
         <label className="check"><input type="checkbox" checked={settings.showKeyLabels} onChange={(e) => update({ showKeyLabels: e.target.checked })} /> Show keybind labels during drills</label>
       </div>
 

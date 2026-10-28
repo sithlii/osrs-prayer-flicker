@@ -1,8 +1,9 @@
 # PRD: OSRS Prayer Flick Trainer
 
-**Status:** Draft v1.3 (prayer table and core flick mechanics verified against the OSRS Wiki)
+**Status:** Draft v1.4 (adds fan-content and non-commercial terms, §1, §2 and §8.1)
 **Platform:** Browser (desktop first)
 **Owner:** Isaac Gartz
+**Project type:** Fan-made and non-commercial. Not affiliated with, endorsed by or sponsored by Jagex Ltd.
 
 ---
 
@@ -11,6 +12,8 @@
 A browser app that teaches Old School RuneScape players to prayer flick. It simulates the 0.6s game tick and the server's prayer drain logic. Players drill each flicking technique and get detailed, immediate feedback on their timing.
 
 The core value is **feedback**. In the game a mistimed flick fails silently: you take a hit or lose points and don't know why. The trainer shows exactly where every input landed relative to the tick and what it cost.
+
+This is a **fan-made project**, built by a player for other players. It is **not affiliated with Jagex** and was **not made for profit**: it is free to use, its source is public on GitHub, and it earns nothing. Old School RuneScape and its artwork belong to Jagex Ltd.
 
 ## 2. Goals
 
@@ -24,6 +27,8 @@ The core value is **feedback**. In the game a mistimed flick fails silently: you
 - Mobile or touch support
 - Reading data from the live game client or integrating with RuneLite
 - Accounts with passwords (see §9 for leaderboard identity)
+- Any kind of monetisation: no ads, paid features, subscriptions, sponsorships or selling of user data. The app stays free and non-commercial.
+- Presenting the app as official, or as connected to Jagex in any way.
 
 ## 3. Target users
 
@@ -260,9 +265,25 @@ Every mode shares: a tick metronome (visual, plus optional audio), a live prayer
 ## 8. UI and visual design
 
 - **Flick drills (5.1–5.4):** a clean, minimal layout focused on the metronome, the orb, the timeline and stats. OSRS styling is optional.
-- **Switching drills (5.5):** a faithful OSRS-style interface. Recreate the look (stone panel textures, orb shape, prayer icon layout, hitsplats) with original art or CSS/SVG. **Do not ship ripped Jagex assets.**
+- **Switching drills (5.5):** a faithful OSRS-style interface. Recreate the look (stone panel textures, orb shape, prayer icon layout, hitsplats) with original CSS/SVG, apart from the prayer icons (§8.1).
 - Accessibility: colour-blind safe palette for timeline states (use shape or pattern as well as colour). Metronome volume and pitch are adjustable.
 - Settings: prayer bonus, starting prayer points, latency offset, metronome options, theme.
+
+### 8.1 Jagex assets and attribution
+
+The trainer is non-commercial fan content, and it uses Jagex material only on that basis.
+
+- **Prayer icons:** use the official in-game prayer icons, sourced from the [OSRS Wiki](https://oldschool.runescape.wiki/). They are stored in the repo (`public/prayers/`) so the app works offline, and they remain © Jagex Ltd.
+- **Everything else is original:** the orbs, stone panels, hitsplats, monsters, tick bar and other UI are CSS/SVG made for this project. Don't add further Jagex assets (sprites, textures, models, sounds) without updating this section.
+- **No game music or sound effects.** The metronome uses original sounds only (§5).
+- **No Jagex branding:** no Jagex or Old School RuneScape logos, and nothing that could suggest the app is official.
+- **Disclaimer, shown in three places:**
+  - the app footer on every page
+  - the README
+  - any public page the app is hosted on, including leaderboard pages (§9)
+
+  It must say the app is fan-made, not affiliated with or endorsed by Jagex, made without profit, and that the prayer icons are © Jagex Ltd via the OSRS Wiki.
+- If the app ever stops being free and non-commercial, the prayer icons must be replaced with original art first.
 
 ---
 
@@ -275,6 +296,7 @@ Every mode shares: a tick metronome (visual, plus optional audio), a live prayer
 - **Anti-cheat (basic):** the server checks submitted input logs (timestamps) by replaying them through the same engine. Reject runs with impossible input rates.
 - **Backend options:** Supabase/Firebase, or a small Node/Edge API with SQLite/Postgres. Decide during implementation.
 - Views: global top 100, your rank, and friends via a shared "group code".
+- **Non-commercial:** no prizes, paid entry or sponsorship. Leaderboard pages carry the same fan-made, not-affiliated disclaimer as the rest of the app (§8.1).
 
 ---
 
@@ -284,6 +306,7 @@ Every mode shares: a tick metronome (visual, plus optional audio), a live prayer
 - **Engine:** a pure, framework-free module (`engine/`) holding the tick clock, input queue, drain bucket and prayer state. Unit-tested and deterministic: given an input log and a seed, it produces the same output. The same engine is reused for server-side replay validation.
 - **Timing:** schedule ticks from `performance.now()` with drift correction, not chained `setTimeout`. Render with `requestAnimationFrame`. Use the Web Audio API for sample-accurate metronome clicks.
 - **Data:** a prayer table in `data/prayers.ts` (§4.6) and monster/encounter presets in `data/encounters.ts`.
+- **Assets:** prayer icons in `public/prayers/<prayerId>.png`, from the OSRS Wiki (§8.1). There are no other bundled game assets.
 - **Persistence:** `localStorage` for settings, keybinds and history. A backend only for the leaderboard.
 
 ```

@@ -126,12 +126,11 @@ export function PrayerIcon({
       className={`prayer prayer-${size} prayer-${kind} ${active ? 'prayer-on' : ''} ${dim ? 'prayer-dim' : ''}`}
       onPointerDown={(e) => { if (onPress) { e.preventDefault(); onPress(e); } }}
       aria-pressed={active}
+      aria-label={pr.name}
       title={`${pr.name} (lvl ${pr.level}, drain ${pr.drain}): ${pr.effect}`}
     >
-      <svg viewBox="0 0 32 32" aria-hidden>
-        <circle cx="16" cy="16" r="13" className="prayer-gem" />
-        <text x="16" y="20.5" textAnchor="middle" className="prayer-glyph">{pr.glyph}</text>
-      </svg>
+      {/* Icons from the OSRS Wiki (© Jagex), used under Jagex's non-commercial fan content terms. */}
+      <img src={`${import.meta.env.BASE_URL}prayers/${id}.png`} alt="" draggable={false} />
       <KeyHint action={`prayer:${id}`} />
     </button>
   );

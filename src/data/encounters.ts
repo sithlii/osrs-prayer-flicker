@@ -52,7 +52,7 @@ export const LAZY_PRESETS: Encounter[] = [
     id: 'starter',
     name: 'Starter: 4-tick bloodveld-style',
     description: 'Wiki-recommended starter. A 4-tick melee monster that never misses, so mistakes are obvious.',
-    attackers: [melee('Mutated bloodveld-style', 4)],
+    attackers: [melee('Bloodveld-style', 4)],
   },
   {
     id: 'six-tick',
